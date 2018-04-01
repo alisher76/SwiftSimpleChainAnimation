@@ -18,15 +18,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = "LearnToAnimate"
-        titleLabel.font = UIFont(name: "Futura", size: 32)
-        titleLabel.numberOfLines = 0
+        setUpLabels()
+        setUpStackView()
         
-        bodyLabel.text = "Animations are clipped to the duration of the animation group. For example, a 10 second animation grouped within an animation group with a duration of 5 seconds will only display the first 5 seconds of the animation"
-        bodyLabel.numberOfLines = 0
         
+    }
+
+    fileprivate func setUpStackView() {
         let stackView = UIStackView(arrangedSubviews: [titleLabel,bodyLabel])
         stackView.axis = .vertical
+        stackView.spacing = 10
         view.addSubview(stackView)
         
         // Enabling AutoLayout
@@ -34,8 +35,15 @@ class ViewController: UIViewController {
         stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -100).isActive = true
-        
     }
-
+    
+    fileprivate func setUpLabels() {
+        titleLabel.text = "LearnToAnimate"
+        titleLabel.font = UIFont(name: "Futura", size: 32)
+        titleLabel.numberOfLines = 0
+        
+        bodyLabel.text = "Animations are clipped to the duration of the animation group. For example, a 10 second animation grouped within an animation group with a duration of 5 seconds will only display the first 5 seconds of the animation"
+        bodyLabel.numberOfLines = 0
+    }
 }
 
